@@ -131,7 +131,7 @@ public class MovieController {
         }
     }
 
-    public void updateMovie() {
+    public void updateMovie(int id) {
         if (addView.getInputTitle().getText().isEmpty()) {
             JOptionPane.showMessageDialog(addView, "Title cannot be empty");
             return;
@@ -186,6 +186,7 @@ public class MovieController {
         int duration = hours * 60 + minutes;
 
         Movie movie = new Movie();
+        movie.setId(id);
         movie.setTitle(title);
         movie.setGenre(genre);
         movie.setDirector(director);

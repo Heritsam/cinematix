@@ -40,7 +40,7 @@ public class MovieDaoImpl implements MovieDao {
             stmt.setInt(5, movie.getId());
 
             stmt.executeUpdate();
-            System.out.println("Movie updated");
+            System.out.println(movie.getId() + " " + movie.getTitle() + " " + movie.getGenre() + " " + movie.getDirector() + " " + movie.getDuration());
         } catch (Exception e) {
             Logger.getLogger(MovieDaoImpl.class.getName()).severe(e.getMessage());
             throw new ApplicationException(e.getMessage());
@@ -66,7 +66,7 @@ public class MovieDaoImpl implements MovieDao {
 
         try (PreparedStatement stmt = SqlClient.getConnection().prepareStatement(sql)) {
             stmt.setString(1, "%" + title + "%");
-            
+
             ResultSet rs = stmt.executeQuery();
             ArrayList<Movie> movies = new ArrayList<Movie>();
 
@@ -106,6 +106,8 @@ public class MovieDaoImpl implements MovieDao {
 
                 movies.add(movie);
             }
+
+            stmt.close();
 
             return movies;
         } catch (Exception e) {

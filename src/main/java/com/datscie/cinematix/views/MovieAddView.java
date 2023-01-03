@@ -183,7 +183,7 @@ public class MovieAddView extends javax.swing.JFrame {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         if (movie != null) {
-            controller.updateMovie();
+            controller.updateMovie(movie.getId());
             controller.reset();
         } else {
             controller.addMovie();
