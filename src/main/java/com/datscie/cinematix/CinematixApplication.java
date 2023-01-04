@@ -21,6 +21,7 @@ public class CinematixApplication {
         ConfigurableApplicationContext context = new SpringApplicationBuilder(CinematixApplication.class)
                 .headless(false).run(args);
         EventQueue.invokeLater(() -> {
+            context.getBean(AuthView.class).setLocationRelativeTo(null);
             context.getBean(AuthView.class).setVisible(true);
         });
 	}

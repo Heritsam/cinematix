@@ -26,6 +26,7 @@ public class MovieController {
     public void showAddMovieFrame() {
         addView = new MovieAddView(this);
         addView.setTitle("Add Movie");
+        addView.setLocationRelativeTo(null);
         addView.setVisible(true);
     }
 
@@ -41,6 +42,7 @@ public class MovieController {
 
         addView = new MovieAddView(this, movie);
         addView.setTitle("Edit Movie");
+        addView.setLocationRelativeTo(null);
         addView.setVisible(true);
     }
 
@@ -208,15 +210,14 @@ public class MovieController {
     public void deleteMovie() {
         int row = view.getTable().getSelectedRow();
 
-        int id = Integer.parseInt(view.getTable().getValueAt(row, 0).toString());
         String title = view.getTable().getValueAt(row, 1).toString();
 
         int confirm = JOptionPane.showConfirmDialog(view, "Are you sure you want to delete " + title + "?",
                 "Delete Movie", JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
-            Movie movie = new Movie();
-            movie.setId(id);
+            MovieTable movieTable = (MovieTable) view.getTable().getModel();
+            Movie movie = movieTable.getMovie(row);
 
             try {
                 dao.deleteMovie(movie);

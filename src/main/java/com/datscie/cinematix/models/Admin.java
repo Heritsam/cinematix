@@ -1,7 +1,5 @@
 package com.datscie.cinematix.models;
 
-import com.datscie.cinematix.models.Auth;
-
 public class Admin extends Auth {
     public Admin() {
     }
