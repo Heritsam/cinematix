@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class MovieTable extends AbstractTableModel {
-    private String[] columnNames = { "id", "Title", "Genre", "Director", "Duration" };
+    private String[] columnNames = { "id", "Title", "Genre", "Director", "Duration", "Synopsis" };
     private List<Movie> data;
 
     public MovieTable(List<Movie> data) {
@@ -19,7 +19,7 @@ public class MovieTable extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -35,6 +35,8 @@ public class MovieTable extends AbstractTableModel {
                 return data.get(rowIndex).getDirector();
             case 4:
                 return data.get(rowIndex).getDuration();
+            case 5:
+                return data.get(rowIndex).getSynopsis();
             default:
                 return null;
         }

@@ -109,16 +109,23 @@ public class MovieController {
             return;
         }
 
+        if (addView.getInputSynopsis().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(addView, "Synopsis cannot be empty");
+            return;
+        }
+
         String title = addView.getInputTitle().getText();
         String genre = addView.getComboGenre().getSelectedItem().toString();
         String director = addView.getInputDirector().getText();
         int duration = hours * 60 + minutes;
+        String synopsis = addView.getInputSynopsis().getText();
 
         Movie movie = new Movie();
         movie.setTitle(title);
         movie.setGenre(genre);
         movie.setDirector(director);
         movie.setDuration(duration);
+        movie.setSynopsis(synopsis);
 
         try {
             dao.addMovie(movie);
@@ -182,10 +189,16 @@ public class MovieController {
             return;
         }
 
+        if (addView.getInputSynopsis().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(addView, "Synopsis cannot be empty");
+            return;
+        }
+
         String title = addView.getInputTitle().getText();
         String genre = addView.getComboGenre().getSelectedItem().toString();
         String director = addView.getInputDirector().getText();
         int duration = hours * 60 + minutes;
+        String synopsis = addView.getInputSynopsis().getText();
 
         Movie movie = new Movie();
         movie.setId(id);
@@ -193,6 +206,7 @@ public class MovieController {
         movie.setGenre(genre);
         movie.setDirector(director);
         movie.setDuration(duration);
+        movie.setSynopsis(synopsis);
 
         try {
             dao.updateMovie(movie);

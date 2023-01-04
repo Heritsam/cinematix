@@ -2,16 +2,18 @@ package com.datscie.cinematix.models;
 
 public class Movie {
     private int id;
-    private String title, genre, director;
+    private String title, genre, director, synopsis;
     private int duration;
 
-    public Movie() {}
+    public Movie() {
+    }
 
-    public Movie(int id, String title, String genre, String director, int duration) {
+    public Movie(int id, String title, String genre, String director, int duration, String synopsis) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.director = director;
+        this.synopsis = synopsis;
         this.duration = duration;
     }
 
@@ -53,5 +55,13 @@ public class Movie {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 }
