@@ -32,10 +32,6 @@ public class MovieController {
 
     public void showEditMovieFrame() {
         int selectedRow = view.getTable().getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(view, "Please select a movie to edit");
-            return;
-        }
 
         MovieTable tableModel = (MovieTable) view.getTable().getModel();
         Movie movie = tableModel.getMovie(selectedRow);

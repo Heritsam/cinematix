@@ -51,7 +51,6 @@ public class StudioController {
             List<Studio> studios = dao.getAllStudios();
             StudioTable tableModel = new StudioTable(studios);
             view.getTable().setModel(tableModel);
-            this.reset();
         } catch (ApplicationException e) {
             JOptionPane.showMessageDialog(view, e.getMessage());
         }
@@ -114,6 +113,8 @@ public class StudioController {
             addView.dispose();
 
             fetchStudioToTable();
+            view.getEditButton().setEnabled(false);
+            view.getDeleteButton().setEnabled(false);
         } catch (ApplicationException e) {
             JOptionPane.showMessageDialog(addView, e.getMessage());
             return;
@@ -136,6 +137,8 @@ public class StudioController {
                 dao.deleteStudio(studio);
                 JOptionPane.showMessageDialog(view, "Studio deleted successfully");
                 fetchStudioToTable();
+                view.getEditButton().setEnabled(false);
+                view.getDeleteButton().setEnabled(false);
             } catch (ApplicationException e) {
                 JOptionPane.showMessageDialog(view, e.getMessage());
                 return;

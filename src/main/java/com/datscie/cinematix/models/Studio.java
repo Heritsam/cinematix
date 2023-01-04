@@ -8,12 +8,13 @@ public class Studio {
     private String name;
     private List<String> seats = new ArrayList<>();
 
-    public Studio() {}
+    public Studio() {
+    }
 
-    public Studio(int id, String name, List<String> seats) {
+    public Studio(int id, String name, String seats) {
         this.id = id;
         this.name = name;
-        this.seats = seats;
+        this.setSeats(seats);
     }
 
     public int getId() {
@@ -49,7 +50,7 @@ public class Studio {
             this.seats.add(seat);
         }
     }
-    
+
     public void addSeat(String seat) {
         this.seats.add(seat);
     }
@@ -66,4 +67,8 @@ public class Studio {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }

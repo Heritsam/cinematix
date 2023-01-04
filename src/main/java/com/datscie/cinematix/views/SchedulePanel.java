@@ -4,17 +4,39 @@
  */
 package com.datscie.cinematix.views;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+import com.datscie.cinematix.controllers.ScheduleController;
+
 /**
  *
  * @author heritsam
  */
 public class SchedulePanel extends javax.swing.JPanel {
 
+    private ScheduleController controller;
+    
     /**
      * Creates new form SchedulePanel
      */
     public SchedulePanel() {
         initComponents();
+        buttonEdit.setEnabled(false);
+        buttonDelete.setEnabled(false);
+        this.controller = new ScheduleController(this);
+    }
+
+    public JButton getButtonEdit() {
+        return buttonEdit;
+    }
+
+    public JButton getButtonDelete() {
+        return buttonDelete;
+    }
+
+    public JTable getTable() {
+        return tableSchedules;
     }
 
     /**
@@ -65,6 +87,11 @@ public class SchedulePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableSchedules.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableSchedulesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableSchedules);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -114,16 +141,21 @@ public class SchedulePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
-        // TODO add your handling code here:
+        controller.showAddScheduleForm();
     }//GEN-LAST:event_buttonAddActionPerformed
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
-        // TODO add your handling code here:
+        controller.deleteSchedule();
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
+        controller.showEditScheduleForm();
     }//GEN-LAST:event_buttonEditActionPerformed
+
+    private void tableSchedulesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSchedulesMouseClicked
+        this.buttonEdit.setEnabled(true);
+        this.buttonDelete.setEnabled(true);
+    }//GEN-LAST:event_tableSchedulesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
