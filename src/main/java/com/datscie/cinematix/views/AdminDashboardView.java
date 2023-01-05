@@ -38,9 +38,11 @@ public class AdminDashboardView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         moviePanel2 = new com.datscie.cinematix.views.MoviePanel();
+        studioPanel1 = new com.datscie.cinematix.views.StudioPanel();
+        schedulePanel1 = new com.datscie.cinematix.views.SchedulePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 330));
+        setPreferredSize(new java.awt.Dimension(500, 500));
 
         buttonLogout.setText("Logout");
         buttonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -52,6 +54,8 @@ public class AdminDashboardView extends javax.swing.JFrame {
         jLabel1.setText("Hello, ");
 
         jTabbedPane2.addTab("Movie", moviePanel2);
+        jTabbedPane2.addTab("Studio", studioPanel1);
+        jTabbedPane2.addTab("Schedule", schedulePanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,7 +79,7 @@ public class AdminDashboardView extends javax.swing.JFrame {
                     .addComponent(buttonLogout)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -98,5 +102,7 @@ public class AdminDashboardView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private com.datscie.cinematix.views.MoviePanel moviePanel2;
+    private com.datscie.cinematix.views.SchedulePanel schedulePanel1;
+    private com.datscie.cinematix.views.StudioPanel studioPanel1;
     // End of variables declaration//GEN-END:variables
 }

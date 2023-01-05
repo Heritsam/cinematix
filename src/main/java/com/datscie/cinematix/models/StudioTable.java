@@ -4,14 +4,14 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-public class MovieTable extends AbstractTableModel {
-    private String[] columnNames = { "id", "Title", "Genre", "Director", "Duration", "Synopsis" };
-    private List<Movie> data;
+public class StudioTable extends AbstractTableModel {
+    private String[] columnNames = {"id", "Studio no", "Seats"};
+    private List<Studio> data;
 
-    public MovieTable(List<Movie> data) {
+    public StudioTable(List<Studio> data) {
         this.data = data;
     }
-
+    
     @Override
     public int getRowCount() {
         return data.size();
@@ -19,7 +19,7 @@ public class MovieTable extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 3;
     }
 
     @Override
@@ -28,15 +28,9 @@ public class MovieTable extends AbstractTableModel {
             case 0:
                 return data.get(rowIndex).getId();
             case 1:
-                return data.get(rowIndex).getTitle();
+                return data.get(rowIndex).getName();
             case 2:
-                return data.get(rowIndex).getGenre();
-            case 3:
-                return data.get(rowIndex).getDirector();
-            case 4:
-                return data.get(rowIndex).getDuration();
-            case 5:
-                return data.get(rowIndex).getSynopsis();
+                return data.get(rowIndex).getSeats();
             default:
                 return null;
         }
@@ -45,8 +39,8 @@ public class MovieTable extends AbstractTableModel {
     public String getColumnName(int col) {
         return columnNames[col];
     }
-
-    public Movie getMovie(int row) {
+    
+    public Studio getStudio(int row) {
         return data.get(row);
     }
 }

@@ -5,6 +5,7 @@
 package com.datscie.cinematix.views;
 
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.datscie.cinematix.controllers.MovieController;
@@ -38,6 +39,7 @@ public class MovieAddView extends javax.swing.JFrame {
         this.inputDirector.setText(movie.getDirector());
         this.inputHours.setText(String.valueOf(movie.getDuration() / 60));
         this.inputMinutes.setText(String.valueOf(movie.getDuration() % 60));
+        this.inputSynopsis.setText(movie.getSynopsis());
     }
 
     public JTextField getInputTitle() {
@@ -58,6 +60,10 @@ public class MovieAddView extends javax.swing.JFrame {
 
     public JTextField getInputMinutes() {
         return inputMinutes;
+    }
+
+    public JTextArea getInputSynopsis() {
+        return inputSynopsis;
     }
 
     /**
@@ -82,6 +88,9 @@ public class MovieAddView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         inputMinutes = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        inputSynopsis = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +114,12 @@ public class MovieAddView extends javax.swing.JFrame {
         jLabel5.setText("hrs");
 
         jLabel6.setText("min");
+
+        jLabel7.setText("Synopsis");
+
+        inputSynopsis.setColumns(20);
+        inputSynopsis.setRows(5);
+        jScrollPane2.setViewportView(inputSynopsis);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,7 +145,9 @@ public class MovieAddView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(inputMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)))
+                        .addComponent(jLabel6))
+                    .addComponent(jLabel7)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,7 +173,11 @@ public class MovieAddView extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(inputMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(buttonSave)
                 .addContainerGap())
         );
@@ -183,7 +204,7 @@ public class MovieAddView extends javax.swing.JFrame {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         if (movie != null) {
-            controller.updateMovie();
+            controller.updateMovie(movie.getId());
             controller.reset();
         } else {
             controller.addMovie();
@@ -197,6 +218,7 @@ public class MovieAddView extends javax.swing.JFrame {
     private javax.swing.JTextField inputDirector;
     private javax.swing.JTextField inputHours;
     private javax.swing.JTextField inputMinutes;
+    private javax.swing.JTextArea inputSynopsis;
     private javax.swing.JTextField inputTitle;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -204,7 +226,9 @@ public class MovieAddView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
     @Override

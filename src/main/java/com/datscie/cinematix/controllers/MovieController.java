@@ -26,21 +26,19 @@ public class MovieController {
     public void showAddMovieFrame() {
         addView = new MovieAddView(this);
         addView.setTitle("Add Movie");
+        addView.setLocationRelativeTo(null);
         addView.setVisible(true);
     }
 
     public void showEditMovieFrame() {
         int selectedRow = view.getTable().getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(view, "Please select a movie to edit");
-            return;
-        }
 
         MovieTable tableModel = (MovieTable) view.getTable().getModel();
         Movie movie = tableModel.getMovie(selectedRow);
 
         addView = new MovieAddView(this, movie);
         addView.setTitle("Edit Movie");
+        addView.setLocationRelativeTo(null);
         addView.setVisible(true);
     }
 
@@ -107,16 +105,23 @@ public class MovieController {
             return;
         }
 
+        if (addView.getInputSynopsis().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(addView, "Synopsis cannot be empty");
+            return;
+        }
+
         String title = addView.getInputTitle().getText();
         String genre = addView.getComboGenre().getSelectedItem().toString();
         String director = addView.getInputDirector().getText();
         int duration = hours * 60 + minutes;
+        String synopsis = addView.getInputSynopsis().getText();
 
         Movie movie = new Movie();
         movie.setTitle(title);
         movie.setGenre(genre);
         movie.setDirector(director);
         movie.setDuration(duration);
+        movie.setSynopsis(synopsis);
 
         try {
             dao.addMovie(movie);
@@ -131,7 +136,7 @@ public class MovieController {
         }
     }
 
-    public void updateMovie() {
+    public void updateMovie(int id) {
         if (addView.getInputTitle().getText().isEmpty()) {
             JOptionPane.showMessageDialog(addView, "Title cannot be empty");
             return;
@@ -180,16 +185,24 @@ public class MovieController {
             return;
         }
 
+        if (addView.getInputSynopsis().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(addView, "Synopsis cannot be empty");
+            return;
+        }
+
         String title = addView.getInputTitle().getText();
         String genre = addView.getComboGenre().getSelectedItem().toString();
         String director = addView.getInputDirector().getText();
         int duration = hours * 60 + minutes;
+        String synopsis = addView.getInputSynopsis().getText();
 
         Movie movie = new Movie();
+        movie.setId(id);
         movie.setTitle(title);
         movie.setGenre(genre);
         movie.setDirector(director);
         movie.setDuration(duration);
+        movie.setSynopsis(synopsis);
 
         try {
             dao.updateMovie(movie);
@@ -207,15 +220,14 @@ public class MovieController {
     public void deleteMovie() {
         int row = view.getTable().getSelectedRow();
 
-        int id = Integer.parseInt(view.getTable().getValueAt(row, 0).toString());
         String title = view.getTable().getValueAt(row, 1).toString();
 
         int confirm = JOptionPane.showConfirmDialog(view, "Are you sure you want to delete " + title + "?",
                 "Delete Movie", JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
-            Movie movie = new Movie();
-            movie.setId(id);
+            MovieTable movieTable = (MovieTable) view.getTable().getModel();
+            Movie movie = movieTable.getMovie(row);
 
             try {
                 dao.deleteMovie(movie);

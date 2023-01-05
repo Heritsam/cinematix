@@ -44,6 +44,7 @@ public class AuthController {
             User user = dao.login(email, password);
             this.reset();
             UserDashboardView userDashboardView = new UserDashboardView(user);
+            userDashboardView.setLocationRelativeTo(null);
             userDashboardView.setVisible(true);
             view.dispose();
         } catch (ApplicationException e) {
@@ -94,6 +95,7 @@ public class AuthController {
             this.reset();
             JOptionPane.showMessageDialog(view, "Registration success");
             UserDashboardView userDashboardView = new UserDashboardView(user);
+            userDashboardView.setLocationRelativeTo(null);
             userDashboardView.setVisible(true);
             view.dispose();
         } catch (ApplicationException e) {
@@ -125,7 +127,9 @@ public class AuthController {
             Admin admin = dao.loginAsAdmin(email, password);
             this.reset();
 
-            new AdminDashboardView(admin).setVisible(true);
+            AdminDashboardView adminDashboardView = new AdminDashboardView(admin);
+            adminDashboardView.setLocationRelativeTo(null);
+            adminDashboardView.setVisible(true);
             view.dispose();
         } catch (ApplicationException e) {
             JOptionPane.showMessageDialog(view, e.getMessage());

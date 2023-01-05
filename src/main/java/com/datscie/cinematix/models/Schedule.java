@@ -11,6 +11,8 @@ public class Schedule {
     private ArrayList<Ticket> tickets;
     private int price;
     
+    public Schedule() {}
+    
     public Schedule(int id, Movie movie, Studio studio, LocalDateTime dateTime, ArrayList<Ticket> tickets, int price) {
         this.id = id;
         this.movie = movie;
@@ -46,6 +48,10 @@ public class Schedule {
 
     public LocalDateTime getDateTime() {
         return dateTime;
+    }
+
+    public String getDateTimeString() {
+        return dateTime.getYear() + "-" + dateTime.getMonthValue() + "-" + dateTime.getDayOfMonth() + " " + dateTime.getHour() + ":" + dateTime.getMinute() + ":" + dateTime.getSecond();
     }
 
     public void setDateTime(LocalDateTime dateTime) {

@@ -7,36 +7,36 @@ package com.datscie.cinematix.views;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
-import com.datscie.cinematix.controllers.MovieController;
+import com.datscie.cinematix.controllers.StudioController;
 
 /**
  *
  * @author heritsam
  */
-public class MoviePanel extends javax.swing.JPanel {
+public class StudioPanel extends javax.swing.JPanel {
 
-    private MovieController controller;
+    private StudioController controller;
     
     /**
-     * Creates new form MoviePanel
+     * Creates new form StudioPanel
      */
-    public MoviePanel() {
+    public StudioPanel() {
         initComponents();
         buttonEdit.setEnabled(false);
         buttonDelete.setEnabled(false);
-        controller = new MovieController(this);
+        this.controller = new StudioController(this);
     }
 
-    public JButton getButtonEdit() {
+    public JButton getEditButton() {
         return buttonEdit;
     }
 
-    public JButton getButtonDelete() {
+    public JButton getDeleteButton() {
         return buttonDelete;
     }
 
     public JTable getTable() {
-        return tableMovie;
+        return tableStudios;
     }
 
     /**
@@ -49,20 +49,11 @@ public class MoviePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonAdd = new javax.swing.JButton();
         buttonEdit = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
+        buttonAdd = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableMovie = new javax.swing.JTable();
-
-        setPreferredSize(new java.awt.Dimension(500, 330));
-
-        buttonAdd.setText("Add");
-        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddActionPerformed(evt);
-            }
-        });
+        tableStudios = new javax.swing.JTable();
 
         buttonEdit.setText("Edit");
         buttonEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +69,14 @@ public class MoviePanel extends javax.swing.JPanel {
             }
         });
 
-        tableMovie.setModel(new javax.swing.table.DefaultTableModel(
+        buttonAdd.setText("Add");
+        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddActionPerformed(evt);
+            }
+        });
+
+        tableStudios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -89,12 +87,12 @@ public class MoviePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableMovie.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableStudios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMovieMouseClicked(evt);
+                tableStudiosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableMovie);
+        jScrollPane1.setViewportView(tableStudios);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,12 +115,12 @@ public class MoviePanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAdd)
                     .addComponent(buttonEdit)
-                    .addComponent(buttonDelete))
+                    .addComponent(buttonDelete)
+                    .addComponent(buttonAdd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -144,20 +142,19 @@ public class MoviePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
-        controller.showAddMovieFrame();
+        controller.showAddStudioFrame();
     }//GEN-LAST:event_buttonAddActionPerformed
 
-    private void tableMovieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMovieMouseClicked
+    private void tableStudiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableStudiosMouseClicked
         controller.toggleButtonEditDelete(true);
-    }//GEN-LAST:event_tableMovieMouseClicked
+    }//GEN-LAST:event_tableStudiosMouseClicked
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        controller.showEditMovieFrame();
+        controller.showEditStudioFrame();
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
-        controller.deleteMovie();
-        controller.reset();
+        controller.deleteStudio();
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
 
@@ -167,6 +164,6 @@ public class MoviePanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonEdit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableMovie;
+    private javax.swing.JTable tableStudios;
     // End of variables declaration//GEN-END:variables
 }
