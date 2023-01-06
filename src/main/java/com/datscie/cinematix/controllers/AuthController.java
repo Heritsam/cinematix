@@ -80,12 +80,39 @@ public class AuthController {
         if (phone.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Phone is required");
             return;
+        }//check if phone number contains only numbers
+        if(!phone.matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(view, "Phone number must contain only numbers");
+            return;
+        }//check if phone number contains 10 digits
+        if(phone.length() != 10) {
+            JOptionPane.showMessageDialog(view, "Phone number must contain 10 digits");
+            return;
+        }//check if phone number starts with 0
+        if(!phone.startsWith("0")) {
+            JOptionPane.showMessageDialog(view, "Phone number must start with 0");
+            return;
         }
-
         if (password.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Password is required");
             return;
         }
+        if(password.length() < 8) {
+            JOptionPane.showMessageDialog(view, "Password must be at least 8 characters");
+            return;
+        }//check if password contains at least one number
+        if(!password.matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(view, "Password must contain at least one number");
+            return;
+        }//check if password contains at least one uppercase letter
+        if(!password.matches(".*[A-Z].*")) {
+            JOptionPane.showMessageDialog(view, "Password must contain at least one uppercase letter");
+            return;
+        }//check if password contains at least one lowercase letter
+        if(!password.matches(".*[a-z].*")) {
+            JOptionPane.showMessageDialog(view, "Password must contain at least one lowercase letter");
+            return;
+        }//check if password contains at least one special character
 
         if (!passwordConfirmation.equals(passwordConfirmation)) {
             JOptionPane.showMessageDialog(view, "Password confirmation is not match");

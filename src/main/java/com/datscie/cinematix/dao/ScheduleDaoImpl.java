@@ -11,6 +11,8 @@ import com.datscie.cinematix.models.Schedule;
 import com.datscie.cinematix.models.Studio;
 import com.datscie.cinematix.utils.ApplicationException;
 import com.datscie.cinematix.utils.SqlClient;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class ScheduleDaoImpl implements ScheduleDao {
     @Override
@@ -18,9 +20,9 @@ public class ScheduleDaoImpl implements ScheduleDao {
         String sql = "select * from schedules inner join movies m on schedules.movie_id = m.id inner join studios s on schedules.studio_id = s.id";
 
         try (PreparedStatement stmt = SqlClient.getConnection().prepareStatement(sql)) {
-            var rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
 
-            var schedules = new ArrayList<Schedule>();
+            ArrayList<Schedule> schedules = new ArrayList<Schedule>();
 
             while (rs.next()) {
                 Schedule schedule = new Schedule();
