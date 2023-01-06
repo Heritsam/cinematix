@@ -37,6 +37,8 @@ public class UserDashboardView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         buttonLogout = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        userHomePanel1 = new com.datscie.cinematix.views.UserHomePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,15 +51,20 @@ public class UserDashboardView extends javax.swing.JFrame {
             }
         });
 
+        jTabbedPane2.addTab("Home", userHomePanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
-                .addComponent(buttonLogout)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
+                        .addComponent(buttonLogout)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -67,7 +74,8 @@ public class UserDashboardView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonLogout)
                     .addComponent(jLabel1))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane2))
         );
 
         pack();
@@ -87,5 +95,7 @@ public class UserDashboardView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonLogout;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private com.datscie.cinematix.views.UserHomePanel userHomePanel1;
     // End of variables declaration//GEN-END:variables
 }

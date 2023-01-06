@@ -94,7 +94,10 @@ public class AdminDashboardView extends javax.swing.JFrame {
         }
         
         this.dispose();
-        new AuthView().setVisible(true);
+        AuthView authView = new AuthView();
+        authView.setLocationRelativeTo(null);
+        authView.setVisible(true);
+        
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
