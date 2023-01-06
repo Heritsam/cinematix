@@ -10,4 +10,6 @@ public interface MovieDao {
     public void updateMovie(Movie movie) throws ApplicationException;
     public void deleteMovie(Movie movie) throws ApplicationException;
     public ArrayList<Movie> getMovies() throws ApplicationException;
+
+    public ArrayList<Movie> searchMovie(String title) throws ApplicationException;
 }
