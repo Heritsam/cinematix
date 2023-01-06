@@ -15,15 +15,17 @@ public class AuthController {
     private AuthView view;
     private UserDao dao;
 
+    //Constructor
     public AuthController(AuthView view) {
         this.view = view;
         this.dao = new UserDaoImpl();
     }
-
+    //ambil email dan password dari textfield
     public void login() {
         String email = view.getInputEmail().getText();
         String password = view.getInputPassword().getText();
 
+        //cek 
         if (email.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Email is required");
             return;
