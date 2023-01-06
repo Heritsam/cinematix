@@ -13,4 +13,6 @@ public interface MovieDao {
     public ArrayList<Movie> getNowPlayingMovies() throws ApplicationException;
     public Movie getMoviesById(int id) throws ApplicationException;
     public Movie getMoviesByTitle(String title) throws ApplicationException;
+
+    public ArrayList<Movie> searchMovie(String title) throws ApplicationException;
 }
