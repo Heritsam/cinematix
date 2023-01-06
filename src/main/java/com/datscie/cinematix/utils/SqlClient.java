@@ -7,7 +7,7 @@ import java.util.logging.*;
 
 public class SqlClient {
    private static Connection connection;
-
+   
    public static Connection getConnection() throws SQLException {  
        if (connection == null) {
            try {
