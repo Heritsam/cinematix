@@ -40,9 +40,9 @@ public class AdminDashboardView extends javax.swing.JFrame {
         moviePanel2 = new com.datscie.cinematix.views.MoviePanel();
         studioPanel1 = new com.datscie.cinematix.views.StudioPanel();
         schedulePanel1 = new com.datscie.cinematix.views.SchedulePanel();
+        userPanel1 = new com.datscie.cinematix.views.UserPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 500));
 
         buttonLogout.setText("Logout");
         buttonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +56,7 @@ public class AdminDashboardView extends javax.swing.JFrame {
         jTabbedPane2.addTab("Movie", moviePanel2);
         jTabbedPane2.addTab("Studio", studioPanel1);
         jTabbedPane2.addTab("Schedule", schedulePanel1);
+        jTabbedPane2.addTab("List User", userPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,5 +105,6 @@ public class AdminDashboardView extends javax.swing.JFrame {
     private com.datscie.cinematix.views.MoviePanel moviePanel2;
     private com.datscie.cinematix.views.SchedulePanel schedulePanel1;
     private com.datscie.cinematix.views.StudioPanel studioPanel1;
+    private com.datscie.cinematix.views.UserPanel userPanel1;
     // End of variables declaration//GEN-END:variables
 }

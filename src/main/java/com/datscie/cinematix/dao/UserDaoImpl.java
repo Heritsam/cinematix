@@ -2,6 +2,7 @@ package com.datscie.cinematix.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import com.datscie.cinematix.models.Admin;
@@ -82,6 +83,31 @@ public class UserDaoImpl implements UserDao {
             }
 
             return admin;
+        } catch (Exception e) {
+            Logger.getLogger(UserDaoImpl.class.getName()).severe(e.getMessage());
+            throw new ApplicationException(e.getMessage());
+        }
+    }
+
+    @Override
+    public ArrayList<User> getAllUsers() throws ApplicationException {
+        String sql = "SELECT * FROM users WHERE type = 'user'";
+        ArrayList<User> users = new ArrayList<>();
+
+        try (PreparedStatement stmt = SqlClient.getConnection().prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setPhone(rs.getString("phone"));
+                users.add(user);
+            }
+
+            return users;
         } catch (Exception e) {
             Logger.getLogger(UserDaoImpl.class.getName()).severe(e.getMessage());
             throw new ApplicationException(e.getMessage());
