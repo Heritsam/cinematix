@@ -11,8 +11,9 @@ public class SqlClient {
     public static Connection getConnection() throws SQLException {
         if (connection == null) {
             try {
+                Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinematix", "root", "");
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(SqlClient.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
