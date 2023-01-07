@@ -54,6 +54,8 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabelGenre" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelDirector" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelDuration" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -72,9 +74,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabelGenre" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabelDirector" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabelDuration" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="241" max="-2" attributes="0"/>
@@ -122,12 +128,22 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelTitle">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel2"/>
+            <Property name="text" type="java.lang.String" value="Title :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelGenre">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel2"/>
+            <Property name="text" type="java.lang.String" value="Genre :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelDirector">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Director :"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelDuration">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Duration :"/>
           </Properties>
         </Component>
       </SubComponents>

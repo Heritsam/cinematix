@@ -38,6 +38,8 @@ public class UserHomePanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
         jLabelGenre = new javax.swing.JLabel();
+        jLabelDirector = new javax.swing.JLabel();
+        jLabelDuration = new javax.swing.JLabel();
 
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -51,9 +53,13 @@ public class UserHomePanel extends javax.swing.JPanel {
 
         jButton2.setText("Buy Ticket");
 
-        jLabelTitle.setText("jLabel2");
+        jLabelTitle.setText("Title :");
 
-        jLabelGenre.setText("jLabel2");
+        jLabelGenre.setText("Genre :");
+
+        jLabelDirector.setText("Director :");
+
+        jLabelDuration.setText("Duration :");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,7 +82,9 @@ public class UserHomePanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelGenre)
-                                    .addComponent(jLabelTitle))
+                                    .addComponent(jLabelTitle)
+                                    .addComponent(jLabelDirector)
+                                    .addComponent(jLabelDuration))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,9 +96,13 @@ public class UserHomePanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelTitle)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelGenre)
-                        .addGap(170, 170, 170)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelDirector)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelDuration)
+                        .addGap(120, 120, 120)
                         .addComponent(jButton2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -112,13 +124,15 @@ public class UserHomePanel extends javax.swing.JPanel {
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         String movie = jList1.getSelectedValue();
-        controller.displayMovieDetails(movie, jLabelTitle,jLabelGenre );
+        controller.displayMovieDetails(movie, jLabelTitle,jLabelGenre,jLabelDirector,jLabelDuration);
     }//GEN-LAST:event_jList1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelDirector;
+    private javax.swing.JLabel jLabelDuration;
     private javax.swing.JLabel jLabelGenre;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JList<String> jList1;

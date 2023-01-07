@@ -42,12 +42,14 @@ public class UserHomeController {
         }
     }
 
-    public void displayMovieDetails(String selectedTitle ,JLabel jLabelMovieTitle, JLabel jLabelMovieGenre) {
+    public void displayMovieDetails(String selectedTitle ,JLabel jLabelMovieTitle, JLabel jLabelMovieGenre, JLabel jLabelMovieDirector,JLabel jLabelDuration) {
         // TODO: Implement this method
         try {
             Movie movie = movieDao.getMoviesByTitle(selectedTitle);
-            jLabelMovieTitle.setText(movie.getTitle());
-            jLabelMovieGenre.setText(movie.getGenre());
+            jLabelMovieTitle.setText("Title   : "+movie.getTitle());
+            jLabelMovieGenre.setText("Genre   : "+movie.getGenre());
+            jLabelMovieDirector.setText("Director: "+movie.getDirector());
+            jLabelDuration.setText("Duration: "+movie.getDuration());
         } catch (ApplicationException ex) {
             Logger.getLogger(UserHomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
