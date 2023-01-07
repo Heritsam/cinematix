@@ -10,7 +10,7 @@ public class Admin extends Auth {
 
     @Override
     public void login() {
-        
+        // TODO Auto-generated method stub
     }
 
     @Override
