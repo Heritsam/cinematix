@@ -54,6 +54,7 @@ public class SchedulePanel extends javax.swing.JPanel {
         buttonDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableSchedules = new javax.swing.JTable();
+        refreshButton = new javax.swing.JButton();
 
         buttonAdd.setText("Add");
         buttonAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -94,20 +95,30 @@ public class SchedulePanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tableSchedules);
 
+        refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(buttonEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonDelete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonAdd)))
+                        .addComponent(buttonAdd))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(refreshButton)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,7 +131,9 @@ public class SchedulePanel extends javax.swing.JPanel {
                     .addComponent(buttonDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(refreshButton)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -158,6 +171,11 @@ public class SchedulePanel extends javax.swing.JPanel {
         this.buttonDelete.setEnabled(true);
     }//GEN-LAST:event_tableSchedulesMouseClicked
 
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        controller.reset();
+        controller.fetchScheduleToTable();
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
@@ -165,6 +183,7 @@ public class SchedulePanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonEdit;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JTable tableSchedules;
     // End of variables declaration//GEN-END:variables
 }
