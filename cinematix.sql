@@ -4,10 +4,6 @@
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
-
--- CREATE DATABASE cinematix; 
-USE cinematix;
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -34,7 +30,7 @@ CREATE TABLE `movies` (
   `duration` int DEFAULT NULL,
   `synopsis` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +39,7 @@ CREATE TABLE `movies` (
 
 LOCK TABLES `movies` WRITE;
 /*!40000 ALTER TABLE `movies` DISABLE KEYS */;
-INSERT INTO `movies` VALUES (4,'Avengers 2012','Action','Joss Whedon',160,'adad');
+INSERT INTO `movies` VALUES (4,'Avengers 2012','Action','Joss Whedon',160,'adad'),(5,'Avatar 2','Action','James Cameron',160,'sinopsis');
 /*!40000 ALTER TABLE `movies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +61,7 @@ CREATE TABLE `schedules` (
   KEY `studio_id` (`studio_id`),
   CONSTRAINT `schedules_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
   CONSTRAINT `schedules_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +95,7 @@ CREATE TABLE `studios` (
 
 LOCK TABLES `studios` WRITE;
 /*!40000 ALTER TABLE `studios` DISABLE KEYS */;
-INSERT INTO `studios` VALUES (1,'A1,A2,A3,','Studio 1');
+INSERT INTO `studios` VALUES (1,'A1,A2,A3,A4,A5,','Studio 1');
 /*!40000 ALTER TABLE `studios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,14 +114,17 @@ CREATE TABLE `tickets` (
   `date` datetime DEFAULT NULL,
   `total_price` int DEFAULT NULL,
   `customer_id` int DEFAULT NULL,
+  `schedule_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `movie_id` (`movie_id`),
   KEY `studio_id` (`studio_id`),
   KEY `customer_id` (`customer_id`),
+  KEY `schedule_id` (`schedule_id`),
   CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
   CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studios` (`id`),
-  CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`schedule_id`) REFERENCES `schedules` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,6 +133,7 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
+INSERT INTO `tickets` VALUES (1,4,'A1',1,'2023-01-07 03:39:44',35000,4,4),(2,4,'A2',1,'2023-01-07 03:41:50',35000,8,4),(3,4,'A1',1,'2023-01-07 03:42:35',35000,8,3);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','080000000000','admin123','admin'),(4,'Ariq Heritsa Maalik','ariqhm@gmail.com','081808625505','edanparah','user'),(6,'Nadya Khairani','nadyakhairani65@gmail.com','087878078015','nadya1521','user'),(7,'Nadya Khairani','nadyakhairani65@gmail.com','087878078015','ndykhrn','user');
+INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','080000000000','admin123','admin'),(4,'Ariq Heritsa Maalik','ariqhm@gmail.com','081808625505','edanparah','user'),(6,'Nadya Khairani','nadyakhairani65@gmail.com','087878078015','nadya123','user'),(8,'Akmal Ikkazum','ikkazum@gmail.com','08123456789','123123','user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -174,4 +174,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-06 20:18:14
+-- Dump completed on 2023-01-08 21:22:11
