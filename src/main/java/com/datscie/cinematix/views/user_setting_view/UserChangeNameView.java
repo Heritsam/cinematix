@@ -5,6 +5,7 @@
 package com.datscie.cinematix.views.user_setting_view;
 
 import com.datscie.cinematix.models.User;
+import com.datscie.cinematix.utils.ApplicationException;
 import com.datscie.cinematix.controllers.user_setting_controller.UserChangeNameController;
 
 /**
@@ -122,7 +123,12 @@ public class UserChangeNameView extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = jTextField1.getText();
         String password = jPasswordField1.getText();
-        controller.changeName(name, password);
+        try {
+            controller.changeName(name, password);
+        } catch (ApplicationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
