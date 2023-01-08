@@ -17,6 +17,9 @@ public class Ticket {
         this.seatNumber = seatNumber;
     }
 
+    public Ticket() {
+    }
+
     public int getId() {
         return id;
     }

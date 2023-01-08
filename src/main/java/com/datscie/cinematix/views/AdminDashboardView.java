@@ -41,6 +41,7 @@ public class AdminDashboardView extends javax.swing.JFrame {
         studioPanel1 = new com.datscie.cinematix.views.StudioPanel();
         schedulePanel1 = new com.datscie.cinematix.views.SchedulePanel();
         userPanel1 = new com.datscie.cinematix.views.UserPanel();
+        reportPanel1 = new com.datscie.cinematix.views.ReportPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +58,7 @@ public class AdminDashboardView extends javax.swing.JFrame {
         jTabbedPane2.addTab("Studio", studioPanel1);
         jTabbedPane2.addTab("Schedule", schedulePanel1);
         jTabbedPane2.addTab("List User", userPanel1);
+        jTabbedPane2.addTab("Report", reportPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +108,7 @@ public class AdminDashboardView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private com.datscie.cinematix.views.MoviePanel moviePanel2;
+    private com.datscie.cinematix.views.ReportPanel reportPanel1;
     private com.datscie.cinematix.views.SchedulePanel schedulePanel1;
     private com.datscie.cinematix.views.StudioPanel studioPanel1;
     private com.datscie.cinematix.views.UserPanel userPanel1;
