@@ -148,8 +148,8 @@ public class StudioController {
     }
 
     public void reset() {
-        addView.getInputStudioNo().setText("");
-        addView.getInputSeats().setText("");
+        view.getEditButton().setEnabled(false);
+        view.getDeleteButton().setEnabled(false);
     }
 
     public void toggleButtonEditDelete(boolean enabled) {
