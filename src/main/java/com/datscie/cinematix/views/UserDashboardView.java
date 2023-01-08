@@ -51,9 +51,9 @@ public class UserDashboardView extends javax.swing.JFrame {
         jTextFieldName = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldPhone = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        changeNameButton = new javax.swing.JButton();
+        changeEmailButton = new javax.swing.JButton();
+        changePhoneButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,30 +74,24 @@ public class UserDashboardView extends javax.swing.JFrame {
 
         jLabel4.setText("Phone");
 
-        jTextFieldName.setText("jTextField1");
-
-        jTextFieldEmail.setText("jTextField2");
-
-        jTextFieldPhone.setText("jTextField3");
-
-        jButton1.setText("Change");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        changeNameButton.setText("Change");
+        changeNameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                changeNameButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Change");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        changeEmailButton.setText("Change");
+        changeEmailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                changeEmailButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Change");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        changePhoneButton.setText("Change");
+        changePhoneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                changePhoneButtonActionPerformed(evt);
             }
         });
 
@@ -119,9 +113,9 @@ public class UserDashboardView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton5))
+                        .addComponent(changeEmailButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(changeNameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(changePhoneButton))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,17 +125,17 @@ public class UserDashboardView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(changeNameButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(changeEmailButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(changePhoneButton))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
 
@@ -186,26 +180,26 @@ public class UserDashboardView extends javax.swing.JFrame {
         new AuthView().setVisible(true);
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void changeNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeNameButtonActionPerformed
         // TODO add your handling code here:
         controller.buttonChangeName();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_changeNameButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void changeEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeEmailButtonActionPerformed
         // TODO add your handling code here:
         controller.buttonChangeEmail();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_changeEmailButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void changePhoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePhoneButtonActionPerformed
         // TODO add your handling code here:
         controller.buttonChangePhone();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_changePhoneButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonLogout;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton changeEmailButton;
+    private javax.swing.JButton changeNameButton;
+    private javax.swing.JButton changePhoneButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
