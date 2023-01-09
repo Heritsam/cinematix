@@ -12,7 +12,7 @@ public class SqlClient {
         if (connection == null) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinematix", "root", "kecilsemua");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinematix", "root", "");
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(SqlClient.class.getName()).log(Level.SEVERE, null, ex);
             }

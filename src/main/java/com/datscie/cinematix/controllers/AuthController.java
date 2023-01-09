@@ -46,6 +46,7 @@ public class AuthController {
 
         try {
             User user = dao.login(email, password);
+            LocalStorage.setLoggedInUser(user);
             this.reset();
             UserDashboardView userDashboardView = new UserDashboardView(user);
             userDashboardView.setLocationRelativeTo(null);
@@ -138,6 +139,7 @@ public class AuthController {
             userDashboardView.setLocationRelativeTo(null);
             userDashboardView.setVisible(true);
             view.dispose();
+            LocalStorage.setLoggedInUser(user);
         } catch (ApplicationException e) {
             JOptionPane.showMessageDialog(view, e.getMessage());
         }
