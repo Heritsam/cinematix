@@ -31,7 +31,8 @@ public class ScheduleDaoImpl implements ScheduleDao {
                 schedule.setMovie(new Movie(rs.getInt("m.id"), rs.getString("title"), rs.getString("genre"),
                         rs.getString("director"), rs.getInt("duration"), rs.getString("synopsis")));
                 schedule.setStudio(new Studio(rs.getInt("s.id"), rs.getString("name"), rs.getString("seats")));
-                schedule.setDateTime(LocalDateTime.parse(rs.getString("date_time"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                schedule.setDateTime(LocalDateTime.parse(rs.getString("date_time"),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 schedule.setPrice(rs.getInt("price"));
 
                 schedules.add(schedule);
@@ -87,6 +88,37 @@ public class ScheduleDaoImpl implements ScheduleDao {
             stmt.setInt(1, schedule.getId());
 
             stmt.executeUpdate();
+        } catch (Exception e) {
+            Logger.getLogger(ScheduleDaoImpl.class.getName()).severe(e.getMessage());
+            throw new ApplicationException(e.getMessage());
+        }
+    }
+
+    @Override
+    public ArrayList<Schedule> getScheduleByMovieId(int movieId) throws ApplicationException {
+        String sql = "select * from schedules inner join movies m on schedules.movie_id = m.id inner join studios s on schedules.studio_id = s.id where m.id = ?";
+
+        try (PreparedStatement stmt = SqlClient.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, movieId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+
+            while (rs.next()) {
+                Schedule schedule = new Schedule();
+
+                schedule.setId(rs.getInt("id"));
+                schedule.setMovie(new Movie(rs.getInt("m.id"), rs.getString("title"), rs.getString("genre"),
+                        rs.getString("director"), rs.getInt("duration"), rs.getString("synopsis")));
+                schedule.setStudio(new Studio(rs.getInt("s.id"), rs.getString("name"), rs.getString("seats")));
+                schedule.setDateTime(LocalDateTime.parse(rs.getString("date_time"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                schedule.setPrice(rs.getInt("price"));
+
+                schedules.add(schedule);
+            }
+
+            return schedules;
         } catch (Exception e) {
             Logger.getLogger(ScheduleDaoImpl.class.getName()).severe(e.getMessage());
             throw new ApplicationException(e.getMessage());

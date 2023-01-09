@@ -44,6 +44,7 @@ public class UserDashboardView extends javax.swing.JFrame {
         buttonLogout = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         userHomePanel1 = new com.datscie.cinematix.views.UserHomePanel();
+        userTicketPanel1 = new com.datscie.cinematix.views.UserTicketPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,7 +55,6 @@ public class UserDashboardView extends javax.swing.JFrame {
         changeNameButton = new javax.swing.JButton();
         changeEmailButton = new javax.swing.JButton();
         changePhoneButton = new javax.swing.JButton();
-        userTicketPanel1 = new com.datscie.cinematix.views.UserTicketPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +68,7 @@ public class UserDashboardView extends javax.swing.JFrame {
         });
 
         jTabbedPane2.addTab("Home", userHomePanel1);
+        jTabbedPane2.addTab("My Tickets", userTicketPanel1);
 
         jLabel2.setText("Name");
 
@@ -106,7 +107,7 @@ public class UserDashboardView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                     .addComponent(jTextFieldName, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -137,11 +138,10 @@ public class UserDashboardView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(changePhoneButton))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Setting", jPanel1);
-        jTabbedPane2.addTab("My Tickets", userTicketPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

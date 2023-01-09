@@ -7,7 +7,12 @@ import com.datscie.cinematix.utils.ApplicationException;
 
 public interface StudioDao {
     public ArrayList<Studio> getAllStudios() throws ApplicationException;
+
     public void addStudio(Studio studio) throws ApplicationException;
+
     public void updateStudio(Studio studio) throws ApplicationException;
+
     public void deleteStudio(Studio studio) throws ApplicationException;
+
+    public Studio getStudioById(int id) throws ApplicationException;
 }

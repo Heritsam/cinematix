@@ -18,7 +18,7 @@ public class StudioDaoImpl implements StudioDao {
             ResultSet rs = stmt.executeQuery();
 
             ArrayList<Studio> studios = new ArrayList<Studio>();
-            
+
             while (rs.next()) {
                 Studio studio = new Studio();
                 studio.setId(rs.getInt("id"));
@@ -75,6 +75,29 @@ public class StudioDaoImpl implements StudioDao {
             stmt.executeUpdate();
         } catch (Exception e) {
             Logger.getLogger(StudioDaoImpl.class.getName());
+            throw new ApplicationException(e.getMessage());
+        }
+    }
+
+    public Studio getStudioById(int id) throws ApplicationException {
+        String sql = "SELECT * FROM studios WHERE id = ?";
+
+        try (PreparedStatement stmt = SqlClient.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Studio studio = new Studio();
+                studio.setId(rs.getInt("id"));
+                studio.setName(rs.getString("name"));
+                studio.setSeats(rs.getString("seats"));
+                return studio;
+            }
+
+            return null;
+        } catch (Exception e) {
+            Logger.getLogger(StudioDaoImpl.class.getName()).severe(e.getMessage());
             throw new ApplicationException(e.getMessage());
         }
     }
