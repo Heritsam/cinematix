@@ -30,7 +30,7 @@ public class TicketDaoImpl implements TicketDao {
                 Ticket ticket = new Ticket();
 
                 ticket.setId(rs.getInt("tickets.id"));
-                ticket.setDateTime(LocalDateTime.parse(rs.getString("date")));
+                ticket.setDateTime(LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 ticket.setSeatNumber(rs.getString("tickets.seats"));
 
                 Movie movie = new Movie();

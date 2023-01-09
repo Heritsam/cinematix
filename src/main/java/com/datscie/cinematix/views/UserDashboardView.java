@@ -54,6 +54,7 @@ public class UserDashboardView extends javax.swing.JFrame {
         changeNameButton = new javax.swing.JButton();
         changeEmailButton = new javax.swing.JButton();
         changePhoneButton = new javax.swing.JButton();
+        userTicketPanel1 = new com.datscie.cinematix.views.UserTicketPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,6 +141,7 @@ public class UserDashboardView extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Setting", jPanel1);
+        jTabbedPane2.addTab("My Tickets", userTicketPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,5 +212,6 @@ public class UserDashboardView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldPhone;
     private com.datscie.cinematix.views.UserHomePanel userHomePanel1;
+    private com.datscie.cinematix.views.UserTicketPanel userTicketPanel1;
     // End of variables declaration//GEN-END:variables
 }

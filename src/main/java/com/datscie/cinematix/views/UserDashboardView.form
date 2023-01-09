@@ -189,6 +189,15 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="com.datscie.cinematix.views.UserTicketPanel" name="userTicketPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="My Tickets">
+                <Property name="tabTitle" type="java.lang.String" value="My Tickets"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
