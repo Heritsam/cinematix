@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for macos13.0 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: localhost    Database: cinematix
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ CREATE TABLE `movies` (
 
 LOCK TABLES `movies` WRITE;
 /*!40000 ALTER TABLE `movies` DISABLE KEYS */;
-INSERT INTO `movies` VALUES (4,'Avengers 2012','Action','Joss Whedon',160,'adad'),(5,'Avatar 2','Action','James Cameron',160,'sinopsis');
+INSERT INTO `movies` VALUES (4,'Avengers 2012','Action','Joss Whedon',160,'adad'),(5,'Titanic','Romance','Akmal',120,'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum');
 /*!40000 ALTER TABLE `movies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,7 @@ CREATE TABLE `schedules` (
 
 LOCK TABLES `schedules` WRITE;
 /*!40000 ALTER TABLE `schedules` DISABLE KEYS */;
-INSERT INTO `schedules` VALUES (1,4,1,'2023-01-06 14:00:00',35000),(3,4,1,'2023-02-07 10:00:00',35000),(4,4,1,'2023-01-07 10:00:00',35000);
+INSERT INTO `schedules` VALUES (1,4,1,'2023-01-06 14:00:00',35000),(3,4,1,'2023-02-07 10:00:00',35000),(4,4,1,'2023-01-07 10:00:00',35000),(5,5,1,'2023-01-10 21:00:00',35000);
 /*!40000 ALTER TABLE `schedules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `studios` (
 
 LOCK TABLES `studios` WRITE;
 /*!40000 ALTER TABLE `studios` DISABLE KEYS */;
-INSERT INTO `studios` VALUES (1,'A1,A2,A3,A4,A5,','Studio 1');
+INSERT INTO `studios` VALUES (1,'A1,A2,A3,','Studio 1');
 /*!40000 ALTER TABLE `studios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,16 +114,13 @@ CREATE TABLE `tickets` (
   `date` datetime DEFAULT NULL,
   `total_price` int DEFAULT NULL,
   `customer_id` int DEFAULT NULL,
-  `schedule_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `movie_id` (`movie_id`),
   KEY `studio_id` (`studio_id`),
   KEY `customer_id` (`customer_id`),
-  KEY `schedule_id` (`schedule_id`),
   CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
   CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`studio_id`) REFERENCES `studios` (`id`),
-  CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`schedule_id`) REFERENCES `schedules` (`id`)
+  CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -133,7 +130,7 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES (1,4,'A1',1,'2023-01-07 03:39:44',35000,4,4),(2,4,'A2',1,'2023-01-07 03:41:50',35000,8,4),(3,4,'A1',1,'2023-01-07 03:42:35',35000,8,3);
+INSERT INTO `tickets` VALUES (1,4,'',1,'2023-01-06 14:00:00',NULL,NULL),(2,4,'',1,'2023-01-07 10:00:00',NULL,NULL),(3,4,'',1,'2023-02-07 10:00:00',NULL,NULL);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,8 +148,9 @@ CREATE TABLE `users` (
   `phone` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +159,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','080000000000','admin123','admin'),(4,'Ariq Heritsa Maalik','ariqhm@gmail.com','081808625505','edanparah','user'),(6,'Nadya Khairani','nadyakhairani65@gmail.com','087878078015','nadya123','user'),(8,'Akmal Ikkazum','ikkazum@gmail.com','08123456789','123123','user');
+INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','080000000000','admin123','admin'),(4,'Ariq Heritsa Maalik','ariqhm@gmail.com','081808625505','edanparah','user'),(7,'Nadya Khairani','nadyakhairani65@gmail.com','087878078015','ndykhrn','user'),(8,'Quin Derbi Kusuma','quin@gmail.com','081234567890','kecilsemua','user'),(9,'zaki','a@gmail.com','1','1','user'),(12,'abc','anjing@gmail.com','123','a','user'),(14,'Quin Derbi Kusuma','quinderbi@gmail.com','0812345678','Kecilsemua1','user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -174,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-08 21:22:11
+-- Dump completed on 2023-01-09 23:47:03
