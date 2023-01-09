@@ -10,22 +10,24 @@ import com.datscie.cinematix.dao.UserDao;
 import com.datscie.cinematix.dao.UserDaoImpl;
 import com.datscie.cinematix.models.User;
 import com.datscie.cinematix.utils.ApplicationException;
+import com.datscie.cinematix.utils.LocalStorage;
 
 public class AuthController {
     private AuthView view;
     private UserDao dao;
 
-    //Constructor
+    // Constructor
     public AuthController(AuthView view) {
         this.view = view;
         this.dao = new UserDaoImpl();
     }
-    //ambil email dan password dari textfield
+
+    // ambil email dan password dari textfield
     public void login() {
         String email = view.getInputEmail().getText();
         String password = view.getInputPassword().getText();
 
-        //cek 
+        // cek
         if (email.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Email is required");
             return;
@@ -49,6 +51,7 @@ public class AuthController {
             userDashboardView.setLocationRelativeTo(null);
             userDashboardView.setVisible(true);
             view.dispose();
+            LocalStorage.setLoggedInUser(user);
         } catch (ApplicationException e) {
             JOptionPane.showMessageDialog(view, e.getMessage());
         }
@@ -81,18 +84,18 @@ public class AuthController {
             JOptionPane.showMessageDialog(view, "Phone is required");
             return;
         }
-        //check if phone number contains only numbers
-        if(!phone.matches("[0-9]+")) {
+        // check if phone number contains only numbers
+        if (!phone.matches("[0-9]+")) {
             JOptionPane.showMessageDialog(view, "Phone number must contain only numbers");
             return;
         }
-        //check if phone number contains 10 digits
-        if(phone.length() < 10) {
+        // check if phone number contains 10 digits
+        if (phone.length() < 10) {
             JOptionPane.showMessageDialog(view, "Phone number must contain 10 digits or more");
             return;
         }
-        //check if phone number starts with 0
-        if(!phone.startsWith("0")) {
+        // check if phone number starts with 0
+        if (!phone.startsWith("0")) {
             JOptionPane.showMessageDialog(view, "Phone number must start with 0");
             return;
         }
@@ -102,26 +105,26 @@ public class AuthController {
             return;
         }
 
-        if(password.length() < 8) {
+        if (password.length() < 8) {
             JOptionPane.showMessageDialog(view, "Password must be at least 8 characters");
             return;
         }
-        //check if password contains at least one number
-        if(!password.matches(".*\\d.*")) {
+        // check if password contains at least one number
+        if (!password.matches(".*\\d.*")) {
             JOptionPane.showMessageDialog(view, "Password must contain at least one number");
             return;
         }
-        //check if password contains at least one uppercase letter
-        if(!password.matches(".*[A-Z].*")) {
+        // check if password contains at least one uppercase letter
+        if (!password.matches(".*[A-Z].*")) {
             JOptionPane.showMessageDialog(view, "Password must contain at least one uppercase letter");
             return;
         }
-        //check if password contains at least one lowercase letter
-        if(!password.matches(".*[a-z].*")) {
+        // check if password contains at least one lowercase letter
+        if (!password.matches(".*[a-z].*")) {
             JOptionPane.showMessageDialog(view, "Password must contain at least one lowercase letter");
             return;
         }
-        //check if password contains at least one special character
+        // check if password contains at least one special character
         if (!passwordConfirmation.equals(passwordConfirmation)) {
             JOptionPane.showMessageDialog(view, "Password confirmation is not match");
             return;

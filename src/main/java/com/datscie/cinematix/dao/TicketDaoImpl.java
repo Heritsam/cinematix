@@ -30,7 +30,8 @@ public class TicketDaoImpl implements TicketDao {
                 Ticket ticket = new Ticket();
 
                 ticket.setId(rs.getInt("tickets.id"));
-                ticket.setDateTime(LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                ticket.setDateTime(
+                        LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 ticket.setSeatNumber(rs.getString("tickets.seats"));
 
                 Movie movie = new Movie();
@@ -47,7 +48,7 @@ public class TicketDaoImpl implements TicketDao {
 
                 ticket.setMovie(movie);
                 ticket.setStudio(studio);
-                
+
                 tickets.add(ticket);
             }
 
@@ -89,7 +90,8 @@ public class TicketDaoImpl implements TicketDao {
                 Ticket ticket = new Ticket();
 
                 ticket.setId(rs.getInt("tickets.id"));
-                ticket.setDateTime(LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                ticket.setDateTime(
+                        LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 ticket.setSeatNumber(rs.getString("tickets.seats"));
 
                 Movie movie = new Movie();
@@ -106,7 +108,7 @@ public class TicketDaoImpl implements TicketDao {
 
                 ticket.setMovie(movie);
                 ticket.setStudio(studio);
-                
+
                 tickets.add(ticket);
             }
 
@@ -145,7 +147,8 @@ public class TicketDaoImpl implements TicketDao {
                 Ticket ticket = new Ticket();
 
                 ticket.setId(rs.getInt("tickets.id"));
-                ticket.setDateTime(LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                ticket.setDateTime(
+                        LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 ticket.setSeatNumber(rs.getString("tickets.seats"));
 
                 Movie movie = new Movie();
@@ -162,11 +165,27 @@ public class TicketDaoImpl implements TicketDao {
 
                 ticket.setMovie(movie);
                 ticket.setStudio(studio);
-                
+
                 tickets.add(ticket);
             }
 
             return tickets;
+        } catch (Exception e) {
+            Logger.getLogger(TicketDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+            throw new ApplicationException(e.getMessage());
+        }
+    }
+
+    public void addTicket(Ticket ticket) throws ApplicationException {
+        String sql = "insert into tickets (movie_id, studio_id, date, seats) values (?, ?, ?, ?)";
+
+        try (PreparedStatement stmt = SqlClient.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, ticket.getMovie().getId());
+            stmt.setInt(2, ticket.getStudio().getId());
+            stmt.setString(3, ticket.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            stmt.setString(4, ticket.getSeatNumber());
+
+            stmt.executeUpdate();
         } catch (Exception e) {
             Logger.getLogger(TicketDaoImpl.class.getName()).log(Level.SEVERE, null, e);
             throw new ApplicationException(e.getMessage());

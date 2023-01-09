@@ -32,6 +32,7 @@ public class UserHomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -61,6 +62,11 @@ public class UserHomePanel extends javax.swing.JPanel {
         jLabel1.setText("Now Showing");
 
         jButton2.setText("Buy Ticket");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabelTitle.setText("Title :");
 
@@ -70,17 +76,6 @@ public class UserHomePanel extends javax.swing.JPanel {
 
         jLabelDuration.setText("Duration :");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-
-            public int getSize() {
-                return strings.length;
-            }
-
-            public String getElementAt(int i) {
-                return strings[i];
-            }
-        });
         jScrollPane2.setViewportView(jList2);
 
         jScrollPane3.setViewportView(jTextPane1);
@@ -170,6 +165,13 @@ public class UserHomePanel extends javax.swing.JPanel {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String dateSring = jList2.getSelectedValue();
+        String movie = jList1.getSelectedValue();
+        controller.bookTicket(movie, dateSring);
+    }// GEN-LAST:event_jButton2ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jList1MouseClicked
         String movie = jList1.getSelectedValue();
