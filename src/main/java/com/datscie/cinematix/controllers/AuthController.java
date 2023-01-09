@@ -10,6 +10,7 @@ import com.datscie.cinematix.dao.UserDao;
 import com.datscie.cinematix.dao.UserDaoImpl;
 import com.datscie.cinematix.models.User;
 import com.datscie.cinematix.utils.ApplicationException;
+import com.datscie.cinematix.utils.LocalStorage;
 
 public class AuthController {
     private AuthView view;
@@ -44,6 +45,7 @@ public class AuthController {
 
         try {
             User user = dao.login(email, password);
+            LocalStorage.setLoggedInUser(user);
             this.reset();
             UserDashboardView userDashboardView = new UserDashboardView(user);
             userDashboardView.setLocationRelativeTo(null);
@@ -135,6 +137,7 @@ public class AuthController {
             userDashboardView.setLocationRelativeTo(null);
             userDashboardView.setVisible(true);
             view.dispose();
+            LocalStorage.setLoggedInUser(user);
         } catch (ApplicationException e) {
             JOptionPane.showMessageDialog(view, e.getMessage());
         }

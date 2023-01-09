@@ -9,8 +9,11 @@ import com.datscie.cinematix.dao.TicketDao;
 import com.datscie.cinematix.dao.TicketDaoImpl;
 import com.datscie.cinematix.models.TicketTable;
 import com.datscie.cinematix.utils.ApplicationException;
+import com.datscie.cinematix.utils.LocalStorage;
 
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,9 +30,9 @@ public class UserTicketPanel extends javax.swing.JPanel {
         initComponents();
         ticketDao = new TicketDaoImpl();
         try {
-            jTable1.setModel(new TicketTable(ticketDao.getAllTicket()));
-        } catch (ApplicationException e) {
-            e.printStackTrace();
+            jTable1.setModel(new TicketTable(ticketDao.getAllTicketByUser(LocalStorage.getLoggedInUser())));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
 

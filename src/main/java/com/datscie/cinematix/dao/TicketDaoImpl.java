@@ -59,9 +59,45 @@ public class TicketDaoImpl implements TicketDao {
     }
 
     @Override
-    public ArrayList<Ticket> getAllTicketByUser(User user) {
-        // TODO Auto-generated method stub
-        return null;
+    public ArrayList<Ticket> getAllTicketByUser(User user) throws ApplicationException {
+        String sql = "select * from tickets left join movies m on tickets.movie_id = m.id left join studios on tickets.studio_id = studios.id where customer_id = ?";
+
+        try (PreparedStatement stmt = SqlClient.getConnection().prepareStatement(sql)) {
+            stmt.setInt(1, user.getId());
+            ResultSet rs = stmt.executeQuery();
+
+            ArrayList<Ticket> tickets = new ArrayList<>();
+
+            while (rs.next()) {
+                Ticket ticket = new Ticket();
+
+                ticket.setId(rs.getInt("tickets.id"));
+                ticket.setDateTime(LocalDateTime.parse(rs.getString("date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                ticket.setSeatNumber(rs.getString("tickets.seats"));
+
+                Movie movie = new Movie();
+                movie.setId(rs.getInt("m.id"));
+                movie.setTitle(rs.getString("title"));
+                movie.setDirector(rs.getString("director"));
+                movie.setGenre(rs.getString("genre"));
+                movie.setDuration(rs.getInt("duration"));
+                movie.setSynopsis(rs.getString("synopsis"));
+                Studio studio = new Studio();
+                studio.setId(rs.getInt("studios.id"));
+                studio.setName(rs.getString("studios.name"));
+                studio.setSeats(rs.getString("studios.seats"));
+
+                ticket.setMovie(movie);
+                ticket.setStudio(studio);
+                
+                tickets.add(ticket);
+            }
+
+            return tickets;
+        } catch (Exception e) {
+            Logger.getLogger(TicketDaoImpl.class.getName()).log(Level.SEVERE, null, e);
+            throw new ApplicationException(e.getMessage());
+        }
     }
 
     @Override
